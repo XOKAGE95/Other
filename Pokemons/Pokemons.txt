@@ -1,0 +1,18 @@
+260
+Swampert
+Water Ground 
+2974
+Mud Shot, Ground, 10, 11.7; Water Gun, Water, 12, 10; 
+Earthquake, Ground, 40, -27.8; Sludge Wave, Poison, 34.4, -31.3; Surf, Water, 45.4, -31.3; Muddy Water, Water, 27.3, -15; Hydro Cannon(event), Water, 56.8, -26.3; 
+4
+Charmander
+Fire 
+980
+Ember, Fire, 12, 10; Scratch, Normal, 12, 8; 
+Flame Thrower, Fire, 38.2, -22.7; Flame Charge, Fire, 22.1, -8.7; Flame Burst, Fire, 32.3, -19.2; 
+5
+Charmeleon
+Fire 
+1653
+Ember, Fire, 12, 10; Fire Fang, Fire, 16, 8.9; 
+Flame Thrower, Fire, 38.2, -22.7; Flame Burst, Fire, 32.3, -19.2; Fire Punch, Fire, 30, 32.3; 
