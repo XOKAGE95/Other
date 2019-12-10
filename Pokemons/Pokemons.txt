@@ -16,3 +16,39 @@ Fire
 1653
 Ember, Fire, 12, 10; Fire Fang, Fire, 16, 8.9; 
 Flame Thrower, Fire, 38.2, -22.7; Flame Burst, Fire, 32.3, -19.2; Fire Punch, Fire, 30, 32.3; 
+1
+Bulbasaur
+Grass Poison 
+1115
+Vine Whip, Grass, 14, 10; Tackle, Normal, 10, 10; 
+Seed Bomb, Grass, 31.4, -15.7; Sludge Bomb, Poison, 41.7, -21.7; Power Whip, Grass, 41.5, -19.2; 
+2
+Ivysaur
+Grass Poison 
+1699
+Vine Whip, Grass, 14, 10; Razor Leaf, Grass, 15.6, 7; 
+Sludge Bomb, Poison, 41.7, -21.7; Solar Beam, Grass, 44.1, -20.4; Power Whip, Grass, 41.5, -19.2; 
+3
+Venusaur
+Grass Poison 
+2720
+Vine Whip, Grass, 14, 10; Razor Leaf, Grass, 15.6, 7; 
+Petal Blizzard, Grass, 50.8, -38.5; Sludge Bomb, Poison, 41.7, -21.7; Solar Beam, Grass, 44.1, -20.4; Frenzy Plant(event), Grass, 46.2, -19.2; 
+4
+Charmander
+Fire 
+980
+Ember, Fire, 12, 10; Scratch, Normal, 12, 8; 
+Flamethrower, Fire, 38.2, -22.7; Flame Charge, Fire, 22.1, -8.7; Flame Burst, 32.3, -19.2; 
+7
+Squirtle
+Water 
+946
+Tackle, Normal, 10, 10; Buble, Water, 12, 11.7; 
+Aqua Jet, Water, 20.8, -12.7; Aqua Tail, Water, 31.6, -17.4; Water Pulse, Water, 26.3, -15.6; 
+8
+Wartortle
+Water 
+1488
+Bite, Dark, 12, 8; Water Gun, Water, 12, 10; 
+Ice Beam, Ice, 27.3, -15.2; Aqua Jet, Water, 20.8, -12.7; Hudro Pump, Water, 47.3, -30.3; 
