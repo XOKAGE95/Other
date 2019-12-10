@@ -13,11 +13,18 @@ enum ask
 {
     finish,
     PokemonName,
+    AllPokemons,
+    Help,
+
 
 };
 
 const int MAXNUM = 10;
 void FindPokemon(string Name, int Num, Pokemon* Pokemons);
+void AllPokemon(Pokemon* Pokemons, int Num);
+void Commands();
+void WriteCommand(string);
+void WriteText(string);
 
 void SetColor(Color text, Color background)
 {
@@ -37,6 +44,12 @@ void ComparisonType(string Type)
         SetColor(LightRed, Black);
     else if (Type == "Normal")
         SetColor(LightGray , Black);
+    else if (Type == "Grass")
+        SetColor(Green , Black);
+    else if (Type == "Ice")
+        SetColor(LightBlue , Black);
+    else if (Type == "Dark")
+        SetColor(DarkGray, Black);
 }
 
 using namespace std;
@@ -53,20 +66,25 @@ int main()
     }
     Pokemon a;
     for (int z = 0; z < i - 1; z++)
-        for (int o = z; o < i - 1; o++)
+        for (int o = 0; o < i - 1; o++)
             if (Pokemons[o].Number > Pokemons[o+1].Number)
             {
                 a = Pokemons[o+1];
                 Pokemons[o+1] = Pokemons[o];
                 Pokemons[o] = a;
             }
+    cout << "Write help to display a list of commands\n";
     while ( 1 > 0 )
     {
         string Name;
         ask A;
         getline(cin, Name);
-        if (Name == "End")
+        if (Name == "End" || Name == "end")
             A = finish;
+        else if (Name == "All" || Name == "all")
+            A = AllPokemons;
+        else if (Name == "Help" || Name == "help")
+            A = Help;
         else
             A = PokemonName;
 
@@ -79,6 +97,43 @@ int main()
         case PokemonName:
             FindPokemon(Name, i, Pokemons);
             break;
+        case AllPokemons:
+            AllPokemon(Pokemons, i);
+            break;
+        case Help:
+            Commands();
+            break;
         }
     }
+}
+
+
+void Commands()
+{
+    WriteCommand("End");
+    WriteText(" or ");
+    WriteCommand("end");
+    WriteText(" to exit.\n");
+    WriteCommand("Help");
+    WriteText(" or ");
+    WriteCommand("help");
+    WriteText(" to display commands.\n");
+    WriteText("Write");
+    WriteCommand(" Name");
+    WriteText(" of pokemon to display him\n");
+    WriteCommand("All");
+    WriteText(" or ");
+    WriteCommand("all");
+    WriteText(" to display all pokemons\n");
+}
+void WriteCommand(string name)
+{
+    SetColor(LightRed , Black);
+    cout << name;
+}
+
+void WriteText(string name)
+{
+    SetColor(LightGray , Black);
+    cout << name;
 }

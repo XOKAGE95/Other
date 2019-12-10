@@ -12,7 +12,7 @@ void ComparisonType(string Type);
 
 void SetColor(Color text, Color background);
 
- void Pokemon :: Definition(ostream& file)
+void Pokemon :: Definition(ostream& file)
 {
     SetColor(DarkGray, White);
     file << left << setw(6) << "#";
@@ -76,4 +76,9 @@ void FindPokemon(string Name, int Num, Pokemon* Pokemons)
             cout << Pokemons[i];
 
 
+}
+void AllPokemon(Pokemon* Pokemons, int Num)
+{
+    for (int i = 0; i < Num; i++)
+        cout << Pokemons[i];
 }
