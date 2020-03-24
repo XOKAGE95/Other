@@ -8,21 +8,21 @@
 #include <cmath>
 #include <glut.h>
 
-double iO = 0.05, jO = 0.07, iG = 0.01,kG = 0.02; // Скорости смещения кубов
-float nO = 20, nG = 15; // Размер ребра кубов
+double iO = 0.05, jO = 0.07, iG = 0.01,kG = 0.02; // РЎРєРѕСЂРѕСЃС‚Рё СЃРјРµС‰РµРЅРёСЏ РєСѓР±РѕРІ
+float nO = 20, nG = 15; // Р Р°Р·РјРµСЂ СЂРµР±СЂР° РєСѓР±РѕРІ
 using namespace std;
 
-enum faces //для обозначения плоскостей
+enum faces //РґР»СЏ РѕР±РѕР·РЅР°С‡РµРЅРёСЏ РїР»РѕСЃРєРѕСЃС‚РµР№
 {
     XoY,
     XoZ,
     YoZ,
 };
 
-class point // Класс точки
+class point // РљР»Р°СЃСЃ С‚РѕС‡РєРё
 {
 private:
-    double i; //Координаты точки
+    double i; //РљРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё
     double j;
     double k;
 public:
@@ -49,15 +49,15 @@ public:
         else if (coordinate == "k")
             k+= A;
     }
-}O(0,0,0), G(40,0,0); // 2 точки для 2х кубов
+}O(0,0,0), G(40,0,0); // 2 С‚РѕС‡РєРё РґР»СЏ 2С… РєСѓР±РѕРІ
 
-void DrawQuads(point O, float n, faces face) // Отрисовка квадратов
+void DrawQuads(point O, float n, faces face) // РћС‚СЂРёСЃРѕРІРєР° РєРІР°РґСЂР°С‚РѕРІ
 {
     double I,J,K;
-    I = O.GetI();   // Точка является центром квадрата
+    I = O.GetI();   // РўРѕС‡РєР° СЏРІР»СЏРµС‚СЃСЏ С†РµРЅС‚СЂРѕРј РєРІР°РґСЂР°С‚Р°
     J = O.GetJ();
     K = O.GetK();
-    switch (face) // Нахождение плоскости, в которой будет рисоваться квадрат
+    switch (face) // РќР°С…РѕР¶РґРµРЅРёРµ РїР»РѕСЃРєРѕСЃС‚Рё, РІ РєРѕС‚РѕСЂРѕР№ Р±СѓРґРµС‚ СЂРёСЃРѕРІР°С‚СЊСЃСЏ РєРІР°РґСЂР°С‚
     {
     case XoY:
         I += -n/2;
@@ -93,38 +93,38 @@ void DrawQuads(point O, float n, faces face) // Отрисовка квадратов
 
 }
 
-void DrawCube(point O, float n, unsigned int R,unsigned int G, unsigned int B) // Отрисовка куба
+void DrawCube(point O, float n, unsigned int R,unsigned int G, unsigned int B) // РћС‚СЂРёСЃРѕРІРєР° РєСѓР±Р°
 {
 
     point A;
     glColor3ub(0,0,0);
     A = O;
-    A.PlusPoint(-n/2, "i"); // Отрисовка задней грани
+    A.PlusPoint(-n/2, "i"); // РћС‚СЂРёСЃРѕРІРєР° Р·Р°РґРЅРµР№ РіСЂР°РЅРё
     DrawQuads(A, n, YoZ);
 
     A = O;
-    A.PlusPoint(-n/2, "j"); // Отрисовка левой грани
+    A.PlusPoint(-n/2, "j"); // РћС‚СЂРёСЃРѕРІРєР° Р»РµРІРѕР№ РіСЂР°РЅРё
     DrawQuads(A, n, XoZ);
 
     A = O;
-    A.PlusPoint(-n/2, "k"); // Отрисовка нижней грани
+    A.PlusPoint(-n/2, "k"); // РћС‚СЂРёСЃРѕРІРєР° РЅРёР¶РЅРµР№ РіСЂР°РЅРё
     DrawQuads(A, n, XoY);
 
     glColor3ub(R,G,B);
     A = O;
-    A.PlusPoint(n/2, "i"); // Орисовка правой грани
+    A.PlusPoint(n/2, "i"); // РћСЂРёСЃРѕРІРєР° РїСЂР°РІРѕР№ РіСЂР°РЅРё
     DrawQuads(A, n, YoZ);
 
     R -= 25; G -= 25; B -= 25;
     glColor3ub(R,G,B);
     A = O;
-    A.PlusPoint(n/2, "j"); // Отрисовка Верхней грани
+    A.PlusPoint(n/2, "j"); // РћС‚СЂРёСЃРѕРІРєР° Р’РµСЂС…РЅРµР№ РіСЂР°РЅРё
     DrawQuads(A, n, XoZ);
 
     R -= 25; G -= 25; B -= 25;
     glColor3ub(R,G,B);
     A = O;
-    A.PlusPoint(n/2, "k");  // Отрисовка передней грани
+    A.PlusPoint(n/2, "k");  // РћС‚СЂРёСЃРѕРІРєР° РїРµСЂРµРґРЅРµР№ РіСЂР°РЅРё
     DrawQuads(A, n, XoY);
 }
 
@@ -154,48 +154,48 @@ void ChangeSize(GLsizei w, GLsizei h)
 {
     if (h == 0)
         h = 1;
-    glClearColor(1.0, 1.0, 1.0, 0.0); // Цвет фона - белый
-    gluLookAt(20.0,10.0,30.0, 0.0,0.0,-10.0, 0.0,1.0,0.0); // Изменение точки обзора: первые 3 точки - точка обзора, вторые 3 точки - точка куда смотрит камера, третьи три точки наклон камеры
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Р¦РІРµС‚ С„РѕРЅР° - Р±РµР»С‹Р№
+    gluLookAt(20.0,10.0,30.0, 0.0,0.0,-10.0, 0.0,1.0,0.0); // РР·РјРµРЅРµРЅРёРµ С‚РѕС‡РєРё РѕР±Р·РѕСЂР°: РїРµСЂРІС‹Рµ 3 С‚РѕС‡РєРё - С‚РѕС‡РєР° РѕР±Р·РѕСЂР°, РІС‚РѕСЂС‹Рµ 3 С‚РѕС‡РєРё - С‚РѕС‡РєР° РєСѓРґР° СЃРјРѕС‚СЂРёС‚ РєР°РјРµСЂР°, С‚СЂРµС‚СЊРё С‚СЂРё С‚РѕС‡РєРё РЅР°РєР»РѕРЅ РєР°РјРµСЂС‹
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-100.0, 100.0, -100.0 , 100.0, -100.0, 100.0); // Задает координаты для крайних точек экрана
+    glOrtho(-100.0, 100.0, -100.0 , 100.0, -100.0, 100.0); // Р—Р°РґР°РµС‚ РєРѕРѕСЂРґРёРЅР°С‚С‹ РґР»СЏ РєСЂР°Р№РЅРёС… С‚РѕС‡РµРє СЌРєСЂР°РЅР°
     glViewport(0, 0, w, h);
 }
 
 void Coordinate()
 {
     glBegin(GL_LINES);
-    glVertex3d(0,0,-400); // Ось Z
+    glVertex3d(0,0,-400); //  РћСЃСЊ Z
     glVertex3d(0,0,400);
 
-    glVertex3d(-400,0,0); // Ось Y
+    glVertex3d(-400,0,0); // РћСЃСЊ Y
     glVertex3d(400,0,0);
     glEnd();
 }
 
-void MouseButton(int button, int state, int x, int y) // Обработка нажатий мыши
+void MouseButton(int button, int state, int x, int y) // РћР±СЂР°Р±РѕС‚РєР° РЅР°Р¶Р°С‚РёР№ РјС‹С€Рё
 {
-    if(button == GLUT_LEFT_BUTTON)  //Левая кнопка
+    if(button == GLUT_LEFT_BUTTON)  // Р›РµРІР°СЏ РєРЅРѕРїРєР°
         if (state == GLUT_DOWN) nG+=1;
-    if(button == GLUT_RIGHT_BUTTON) //Правая кнопка
+    if(button == GLUT_RIGHT_BUTTON) // РџСЂР°РІР°СЏ РєРЅРѕРїРєР°
         if (state == GLUT_DOWN) nG-=1;
 }
-void RenderCartoon() //Основная сцена
+void RenderCartoon() // РџСЂР°РІР°СЏ РєРЅРѕРїРєР°
 {
-    glColor3d(0.0, 0.0, 0.0); //цвет - черный
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Очистка буффера
-    Coordinate();   //Отрисовка координат
-        DrawCube(G, nG, 255 ,50, 50); //Отрисовка красного куба
-        DrawCube(O, nO, 160 ,160, 160); //Отрисовка серого куба
+    glColor3d(0.0, 0.0, 0.0); // С†РІРµС‚ - С‡РµСЂРЅС‹Р№
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // РћС‡РёСЃС‚РєР° Р±СѓС„С„РµСЂР°
+    Coordinate();   // РћС‚СЂРёСЃРѕРІРєР° РєРѕРѕСЂРґРёРЅР°С‚
+        DrawCube(G, nG, 255 ,50, 50); // РћС‚СЂРёСЃРѕРІРєР° РєСЂР°СЃРЅРѕРіРѕ РєСѓР±Р°
+        DrawCube(O, nO, 160 ,160, 160); // РћС‚СЂРёСЃРѕРІРєР° СЃРµСЂРѕРіРѕ РєСѓР±Р°
 
-        O.PlusPoint(iO, "i");   //Смещение центра серого куба
+        O.PlusPoint(iO, "i");   // РЎРјРµС‰РµРЅРёРµ С†РµРЅС‚СЂР° СЃРµСЂРѕРіРѕ РєСѓР±Р°
         O.PlusPoint(jO, "j");
         if (abs(O.GetI()) >= 100.0)
             iO *= -1.0;
         if (abs(O.GetJ()) >= 100.0)
             jO *= -1.0;
 
-        G.PlusPoint(iG, "i"); // Смещение центра красного куба
+        G.PlusPoint(iG, "i"); // РЎРјРµС‰РµРЅРёРµ С†РµРЅС‚СЂР° РєСЂР°СЃРЅРѕРіРѕ РєСѓР±Р°
         if (abs(O.GetI()) >= 40.0)
             iG *= -1.0;
     glutSwapBuffers();
@@ -204,17 +204,17 @@ void RenderCartoon() //Основная сцена
 
 int main (int argc, char **argv)
 {
-    glutInit(&argc, argv); //Инициализация GLUT
-    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA); //Режим окна
-    glutInitWindowSize(600, 600); // Размеры окна
-    glutInitWindowPosition(20, 20); // Позиция окна
-    glutCreateWindow("4laba");  // Создание окна с названием 4laba
-    //glutFullScreen();   //Полноэкранный режим
-    glutDisplayFunc(RenderCartoon); //Отоброжение функции в окне
-    glutIdleFunc(RenderCartoon); // Для работы анимации
-    glutSpecialFunc(processSpecialKeys); // Обработка спец клавиш
-    glutReshapeFunc(ChangeSize); //При изменении размера окна вызывается эта функция
-    glutMouseFunc(MouseButton); //Обработка нажатий мыши
-    glutMainLoop(); //Без нее ничего не работает :( (Создает цикл обработки всех предыдущих функций)
+    glutInit(&argc, argv); // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ GLUT
+    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA); // Р РµР¶РёРј РѕРєРЅР°
+    glutInitWindowSize(600, 600); // Р Р°Р·РјРµСЂС‹ РѕРєРЅР°
+    glutInitWindowPosition(20, 20); // РџРѕР·РёС†РёСЏ РѕРєРЅР°
+    glutCreateWindow("4laba");  // РЎРѕР·РґР°РЅРёРµ РѕРєРЅР° СЃ РЅР°Р·РІР°РЅРёРµРј 4laba
+    //glutFullScreen();   // РџРѕР»РЅРѕСЌРєСЂР°РЅРЅС‹Р№ СЂРµР¶РёРј
+    glutDisplayFunc(RenderCartoon); // РћС‚РѕР±СЂРѕР¶РµРЅРёРµ С„СѓРЅРєС†РёРё РІ РѕРєРЅРµ
+    glutIdleFunc(RenderCartoon); // Р”Р»СЏ СЂР°Р±РѕС‚С‹ Р°РЅРёРјР°С†РёРё
+    glutSpecialFunc(processSpecialKeys); // РћР±СЂР°Р±РѕС‚РєР° СЃРїРµС† РєР»Р°РІРёС€
+    glutReshapeFunc(ChangeSize); // РџСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂР° РѕРєРЅР° РІС‹Р·С‹РІР°РµС‚СЃСЏ СЌС‚Р° С„СѓРЅРєС†РёСЏ
+    glutMouseFunc(MouseButton); // РџСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂР° РѕРєРЅР° РІС‹Р·С‹РІР°РµС‚СЃСЏ СЌС‚Р° С„СѓРЅРєС†РёСЏ
+    glutMainLoop(); // Р‘РµР· РЅРµРµ РЅРёС‡РµРіРѕ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ :( (РЎРѕР·РґР°РµС‚ С†РёРєР» РѕР±СЂР°Р±РѕС‚РєРё РІСЃРµС… РїСЂРµРґС‹РґСѓС‰РёС… С„СѓРЅРєС†РёР№)
     return 0;
 }
